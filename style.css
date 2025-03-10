@@ -1,0 +1,694 @@
+:root {
+  --DB_purple: #4d3d61;
+  --DB_yellow: #fad652;
+  --DB_blue: #a3d1d4;
+  --DB_green: #b0b97f;
+  --DB_red: #c5663a;
+  --DB_purple_inverted: #b2c29e;
+  --DB_yellow_inverted: #0529ad;
+  --DB_blue_inverted: #5c2e2b;
+  --DB_green_inverted: #4f4680;
+  --DB_red_inverted: #3a99c5;
+}
+
+@font-face {
+  font-family: 'dobbo medium';
+  src: url('fonts/ABCDiatypeRounded-Medium.otf') format('opentype');
+  /* url('fonts/ABCDiatypeRounded-Medium-Trial.woff') format('woff'),
+    url('fonts/ABCDiatypeRounded-Medium-Trial.woff2') format('woff2'); */
+}
+@font-face {
+  font-family: 'dobbo bold';
+  src: url('fonts/ABCDiatypeRounded-Bold.otf') format('opentype');
+  /* url('fonts/ABCDiatypeRounded-Bold-Trial.woff') format('woff'),
+    url('fonts/ABCDiatypeRounded-Bold-Trial.woff2') format('woff2'); */
+}
+@font-face {
+  font-family: 'dobbo bold italic';
+  src: url('fonts/ABCDiatypeRounded-BoldItalic.otf') format('opentype');
+  /* url('fonts/ABCDiatypeRounded-BoldItalic-Trial.woff') format('woff'),
+    url('fonts/ABCDiatypeRounded-BoldItalic-Trial.woff2') format('woff2'); */
+}
+
+/* general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'dobbo medium';
+  color: var(--DB_purple);
+  list-style-type: none;
+  text-decoration: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  border: none;
+  list-style-type: none;
+}
+*::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  cursor: none;
+  width: 100vw;
+  min-height: 100dvh;
+  background-color: white;
+  font-size: 16px;
+}
+
+.page-container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+img,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+.site-button,
+.site-button::after,
+h1 {
+  border-radius: 30px;
+}
+.site-button,
+h1 {
+  border: 1.5px solid var(--DB_purple);
+}
+
+/* ----v--- button hover fill effect ---v--- */
+.site-button {
+  position: relative;
+}
+.site-button::after {
+  /* cursor: pointer; */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--DB_purple);
+  clip-path: circle(0%);
+  transition: 0.4s ease;
+  z-index: 0;
+}
+button a {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+/* cursor + hover states only on desktop */
+@media (hover: hover), (-ms-high-contrast: none) {
+  .site-button:hover::after {
+    clip-path: circle(100%);
+  }
+  .site-button:hover a {
+    color: lightgray;
+    transition: color 0.4s ease;
+  }
+  /* ---^--- button hover fill effect ---^--- */
+
+  /* ---v--- circle following cursor effect ---v--- */
+  .circle {
+    --circle-size: 60px;
+    position: fixed;
+    height: var(--circle-size);
+    width: var(--circle-size);
+    border: 2px solid var(--DB_purple_inverted);
+    background-color: var(--DB_purple_inverted);
+    border-radius: 100%;
+    top: calc(var(--circle-size) / 2 * -1);
+    left: calc(var(--circle-size) / 2 * -1);
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: exclusion;
+  }
+  /* ---^--- circle following cursor effect ---^--- */
+}
+
+a {
+  font-size: 16px;
+  cursor: none;
+}
+
+.bold {
+  font-family: 'dobbo bold';
+}
+
+/* header */
+header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+}
+.site-logo {
+  width: 140px;
+}
+.site-logo a {
+  display: block;
+  padding: 0;
+}
+.site-logo img {
+  width: 100%;
+}
+#about-btn {
+  background-color: var(--DB_blue);
+}
+#about-a {
+  padding: 10px 14px;
+}
+
+/* body */
+article {
+  background-color: white;
+}
+.img-container {
+  height: 470px;
+}
+
+.pedal-img {
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+#dobbo-pedal-img {
+  background-image: url(assets/dobbo_pedal_groot_crop.jpg);
+  position: relative;
+}
+#dobbo-order-btn-container {
+  padding: 26px;
+}
+.fine-print {
+  background-color: var(--DB_purple);
+  font-size: 12px;
+  text-align: center;
+  padding: 14px 20px;
+}
+.fine-print-line {
+  color: white;
+  font-family: 'dobbo bold italic';
+  display: inline-block;
+}
+
+.text-section {
+  padding: 36px 26px;
+}
+.pedal-logo,
+.title {
+  padding: 0 0 30px 0;
+}
+.pedal-logo img {
+  width: 208px;
+  margin: 0 auto;
+}
+
+.iframe-container {
+  /* v placeholder v */
+  /* background-image: url(assets/dobbo_pedal.jpg);
+  background-size: cover;
+  background-position: center; */
+  /* ^ placeholder ^ */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+}
+iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.order-btn-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.order-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: var(--DB_yellow);
+}
+.order-btn a {
+  padding: 12px 16px;
+}
+
+/* ---v--- img carousel ---v--- */
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.slides-container {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: scroll;
+  overflow-y: none;
+  scroll-behavior: smooth;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  flex: 1 0 100%;
+}
+.slide-arrow {
+  position: absolute;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 4rem;
+  border: none;
+  width: 2rem;
+  font-family: 'dobbo bold';
+  font-size: 2rem;
+  padding: 0;
+  background-color: unset;
+}
+.slide-arrow:hover,
+.slide-arrow:focus {
+  opacity: 1;
+}
+#slide-arrow-prev {
+  left: 0;
+  padding-left: 0.5rem;
+}
+#slide-arrow-next {
+  right: 0;
+  padding-right: 0.5rem;
+}
+/* ---^--- img carousel ---^--- */
+
+h1 {
+  font-weight: 400;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 10px 22px;
+  text-align: center;
+  font-size: 18px;
+  background-color: var(--DB_blue);
+}
+
+/* footer */
+footer {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--DB_blue);
+  bottom: 0;
+}
+.links {
+  display: flex;
+  justify-content: space-between;
+}
+.links-socials {
+  width: 100%;
+}
+.links a {
+  display: inline-block;
+  padding: 10px 12px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.2s;
+  /*opera and mozilla support*/
+  -webkit-text-decoration-color: transparent;
+  -moz-text-decoration-color: transparent;
+}
+.links a:hover {
+  text-decoration-color: var(--DB_purple);
+  /*opera and mozilla support*/
+  -webkit-text-decoration-color: var(--DB_purple);
+  -moz-text-decoration-color: var(--DB_purple);
+}
+
+@media screen and (min-width: 375px) {
+  header {
+    padding: 20px;
+  }
+  .fine-print {
+    padding: 14px 40px;
+  }
+  .text-section {
+    padding: 40px 26px;
+  }
+  .pedal-logo,
+  .title {
+    padding: 0 0 36px 0;
+  }
+  h1 {
+    padding: 10px 26px;
+  }
+  footer {
+    padding: 12px 14px;
+  }
+}
+@media screen and (min-width: 400px) {
+  header {
+    padding: 22px;
+  }
+  .img-container {
+    height: 540px;
+  }
+  #dobbo-order-btn-container {
+    padding: 31px;
+  }
+  .pedal-logo img {
+    width: 220px;
+  }
+  .text-section {
+    padding: 44px 38px;
+  }
+  .slide-arrow {
+    width: 2.5rem;
+  }
+  #slide-arrow-prev {
+    padding-left: 1rem;
+  }
+  #slide-arrow-next {
+    padding-right: 1rem;
+  }
+  .links a {
+    padding: 10px 16px;
+  }
+}
+@media screen and (min-width: 600px) {
+  body,
+  a {
+    font-size: 18px;
+  }
+  .site-logo {
+    width: 152px;
+  }
+  .title,
+  .pedal-logo {
+    padding: 20px;
+  }
+  .pedal-logo img {
+    width: 260px;
+  }
+  .img-container {
+    height: 580px;
+  }
+  .fine-print {
+    font-size: 14px;
+    padding: 18px 40px;
+  }
+  .text-section {
+    padding: 52px;
+  }
+  .text-section p {
+    width: 85%;
+    margin: auto;
+    padding: 20px 0;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    height: 385px;
+  }
+  .slides-container {
+    height: 100%;
+    width: unset;
+  }
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: unset;
+    flex: 0 0 auto; /* Prevents shrinking, keeps width auto */
+  }
+  .slide img {
+    height: 100%;
+    width: auto; /* Keep aspect ratio */
+    object-fit: contain;
+  }
+
+  h1 {
+    font-size: 20px;
+    padding: 10px 60px;
+  }
+  footer {
+    padding: 14px 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  body,
+  a {
+    font-size: 16px;
+  }
+  .img-container {
+    height: 500px;
+  }
+  #dobbo-order-btn-container {
+    padding: 30px;
+  }
+  .pedal-logo {
+    padding: 20px;
+  }
+  .pedal-logo img {
+    width: 226px;
+  }
+  .text-section {
+    padding: 60px 70px;
+  }
+  .pedal-info {
+    padding: 50px 60px 70px;
+  }
+  .vid-container {
+    width: 100%;
+    padding: 0;
+  }
+  .slide-arrow {
+    width: 2.9rem;
+    font-size: 2.2rem;
+  }
+}
+@media screen and (min-width: 992px) {
+}
+@media screen and (min-width: 1024px) {
+  a {
+    font-size: 18px;
+  }
+  .site-logo {
+    width: 160px;
+  }
+  .rel {
+    position: relative;
+  }
+  .img-container {
+    height: 600px;
+    background-color: var(--DB_blue);
+  }
+  .pedal-img {
+    width: 40%;
+    margin: 0 46px;
+  }
+  .fine-print {
+    font-size: 16px;
+  }
+  .text-section {
+    padding: 0;
+  }
+  .text-section p {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .pedal-info {
+    position: absolute;
+    width: 60%;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 56px 60px;
+  }
+  #dobbo-desc-1 {
+    padding: 20px 40px;
+  }
+  .pedal-logo img {
+    width: 260px;
+  }
+  #dobbo-order-btn-container {
+    padding: 42px;
+  }
+
+  .flex {
+    display: flex;
+    padding: 100px 80px;
+    align-items: center;
+  }
+  .vid-container {
+    flex: 1 0 66%;
+    order: 2;
+    margin-left: 70px;
+  }
+  .iframe-container {
+    border-radius: 30px;
+  }
+
+  .slider-wrapper {
+    height: 460px;
+    /*  ---v--- placeholder no video ---v--- */
+    /* margin-top: 80px; */
+    margin-top: 16px;
+  }
+  .slides-container {
+    gap: 16px;
+  }
+
+  #about-section {
+    width: 760px;
+    margin: 0 auto;
+    padding: 80px;
+    text-align: center;
+  }
+  .title {
+    padding: 0 0 40px 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .circle {
+    --circle-size: 70px;
+  }
+  body,
+  a {
+    font-size: 20px;
+  }
+  header {
+    padding: 30px;
+  }
+  .site-logo {
+    width: 180px;
+  }
+  .flex {
+    padding: 150px 120px;
+  }
+  .pedal-info {
+    padding: 80px 60px;
+  }
+  .img-container {
+    height: 670px;
+  }
+  #dobbo-order-btn-container {
+    padding: 48px;
+  }
+  /* .slider-wrapper {
+    height: 520px;
+  } */
+  /* ---v--- no video placeholder ---v--- */
+  .slider-wrapper {
+    height: 580px;
+    /* margin-top: 120px; */
+  }
+  /* ---^--- no video placeholder ---^--- */
+
+  .slide-arrow {
+    width: 3.5rem;
+    font-size: 3rem;
+  }
+
+  #about-section {
+    padding: 120px 80px;
+  }
+  .links {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .links a {
+    padding: 14px 18px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  body,
+  a {
+    font-size: 22px;
+  }
+  header {
+    padding: 32px;
+  }
+  .site-logo {
+    width: 194px;
+  }
+  #about-a {
+    padding: 10px 18px;
+  }
+  .order-btn a {
+    padding: 12px 22px;
+  }
+  .site-button,
+  h1 {
+    border: 2px solid var(--DB_purple);
+  }
+  /* .flex {
+    padding: 160px;
+  } */
+  .img-container {
+    height: 730px;
+  }
+  .pedal-img {
+    margin: 0 84px;
+  }
+  #dobbo-order-btn-container {
+    padding: 50px;
+  }
+  .pedal-info {
+    padding: 76px 140px;
+  }
+  .pedal-logo {
+    padding: 24px;
+  }
+  .pedal-logo img {
+    width: 280px;
+  }
+  .fine-print {
+    font-size: 18px;
+    padding: 22px 40px;
+  }
+  .slider-wrapper {
+    height: 600px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+  #about-section {
+    width: 820px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .pedal-img {
+    margin: 0 120px;
+  }
+  .pedal-info {
+    right: 20px;
+    max-width: 1000px;
+  }
+  .fine-print {
+    padding: 24px 40px;
+  }
+  .flex {
+    padding: 160px;
+  }
+  .vid-container {
+    flex: 1 0 70%;
+    margin-left: 120px;
+  }
+  .slider-wrapper {
+    height: 560px;
+  }
+}
