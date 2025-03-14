@@ -205,7 +205,8 @@ article {
   padding: 36px 26px;
 }
 .pedal-logo,
-.title {
+.title,
+.manual-btn-container {
   padding: 0 0 30px 0;
 }
 .pedal-logo img {
@@ -214,15 +215,10 @@ article {
 }
 
 .iframe-container {
-  /* v placeholder v */
-  /* background-image: url(assets/dobbo_pedal.jpg);
-  background-size: cover;
-  background-position: center; */
-  /* ^ placeholder ^ */
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+  padding-top: 76%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
 }
 iframe {
   position: absolute;
@@ -424,7 +420,8 @@ footer {
     width: 152px;
   }
   .title,
-  .pedal-logo {
+  .pedal-logo,
+  .manual-btn-container {
     padding: 20px;
   }
   .pedal-logo img {
@@ -433,30 +430,33 @@ footer {
   .img-container {
     height: 580px;
   }
+  .price,
   .fine-print {
     font-size: 14px;
+  }
+  .fine-print {
     padding: 18px 40px;
   }
   .text-section {
     padding: 52px;
   }
-  .text-section p {
-    width: 85%;
-    margin: auto;
+  .desc {
+    margin: 0 auto;
     padding: 20px 0;
   }
-  .pedal-info {
-    padding: 52px 52px 32px 52px;
+  #dobbo-desc-1,
+  #dobbo-desc-2 {
+    max-width: 432px;
+  }
+  #about {
+    max-width: 500px;
   }
   /* .manual-btn-container {
     padding: 0 0 72px 0;
   } */
-  .price {
-    font-size: 14px;
-  }
-  #dobbo-desc-2 {
+  /* #dobbo-desc-2 {
     padding-top: 32px;
-  }
+  } */
 
   /* .manual-btn-container {
     padding: 20px;
@@ -512,18 +512,30 @@ footer {
   .text-section {
     padding: 60px 70px;
   }
+  #dobbo-desc-1 {
+    max-width: 560px;
+  }
+  #dobbo-desc-2 {
+    max-width: 520px;
+  }
+  #about {
+    max-width: 570px;
+  }
   /* .pedal-info {
     padding: 50px 60px 70px;
   } */
-  .pedal-info {
+  /* .pedal-info {
     padding: 50px 60px 20px;
-  }
-  #dobbo-desc-2 {
+  } */
+  /* #dobbo-desc-2 {
     padding: 20px 60px 70px;
-  }
+  } */
   .vid-container {
     width: 100%;
-    padding: 0;
+    padding: 0 70px;
+  }
+  .iframe-container {
+    border-radius: 30px;
   }
 
   .slide-arrow {
@@ -533,6 +545,7 @@ footer {
 }
 @media screen and (min-width: 992px) {
 }
+
 @media screen and (min-width: 1024px) {
   a {
     font-size: 18px;
@@ -554,11 +567,6 @@ footer {
   .text-section {
     padding: 0;
   }
-  .text-section p {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
   .pedal-info {
     position: absolute;
     width: 55%;
@@ -576,20 +584,16 @@ footer {
   #dobbo-order-btn-container {
     padding: 28px;
   }
-
-  .flex {
-    display: flex;
-    padding: 100px 80px;
-    align-items: center;
-  }
   .vid-container {
-    flex: 1 0 66%;
-    order: 2;
-    margin-left: 70px;
+    padding: 80px;
+    padding-bottom: 0;
+    max-width: 68vw;
+    margin: 0 auto;
   }
   .iframe-container {
     border-radius: 30px;
   }
+
   #dobbo-desc-2 p {
     display: block;
   }
@@ -603,11 +607,11 @@ footer {
     padding: 0;
   }
 
-  .slider-wrapper {
+  /* .slider-wrapper {
     height: 460px;
-    /*  ---v--- placeholder no video ---v--- */
-    /* margin-top: 80px; */
-    /* margin-top: 16px; */
+  } */
+  .slider-wrapper {
+    height: 315px;
   }
   .slides-container {
     gap: 16px;
@@ -615,7 +619,7 @@ footer {
 
   .wrap-manual-desc2,
   #about-section {
-    width: 760px;
+    /* width: 760px; */
     margin: 0 auto;
     text-align: center;
   }
@@ -624,6 +628,9 @@ footer {
   }
   #about-section {
     padding: 80px;
+  }
+  #about {
+    padding: 0;
   }
   .manual-btn-container,
   .title {
@@ -665,18 +672,18 @@ footer {
     padding-top: 10px;
   }
   .wrap-manual-desc2 {
-    padding: 120px 50px;
+    padding: 80px 50px 120px;
   }
-  /* .slider-wrapper {
-    height: 520px;
-  } */
-  /* ---v--- no video placeholder ---v--- */
-  .slider-wrapper {
-    height: 580px;
-    /* margin-top: 120px; */
+  .vid-container {
+    padding: 120px 80px 0;
   }
-  /* ---^--- no video placeholder ---^--- */
+  #dobbo-desc-2 {
+    max-width: 670px;
+  }
 
+  .slider-wrapper {
+    height: 385px;
+  }
   .slide-arrow {
     width: 3.5rem;
     font-size: 3rem;
@@ -684,6 +691,9 @@ footer {
 
   #about-section {
     padding: 120px 20px;
+  }
+  #about {
+    max-width: 720px;
   }
   .links {
     width: 98%;
@@ -752,20 +762,16 @@ footer {
   #dobbo-desc-1 {
     padding: 20px 0;
   }
-  .wrap-manual-desc2,
-  #about-section {
-    width: 800px;
-    padding: 120px 0;
-  }
-  .wrap-manual-desc2 {
+  /* .wrap-manual-desc2 {
     padding: 120px 30px;
+  } */
+
+  #about {
+    max-width: 800px;
   }
-  #about-section {
-    padding: 120px 0;
-  }
-  .slider-wrapper {
+  /* .slider-wrapper {
     height: 600px;
-  }
+  } */
 
   h1 {
     font-size: 22px;
@@ -790,10 +796,18 @@ footer {
     padding: 160px;
   }
   .vid-container {
-    flex: 1 0 70%;
-    margin-left: 120px;
+    max-width: 54%;
   }
   .slider-wrapper {
-    height: 560px;
+    height: 480px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (orientation: portrait) {
+  .vid-container {
+    max-width: unset;
+  }
+  .slider-wrapper {
+    height: 480px;
   }
 }
