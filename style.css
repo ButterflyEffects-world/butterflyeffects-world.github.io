@@ -184,7 +184,7 @@ article {
 }
 #dobbo-pedal-img {
   position: relative;
-  background-image: url(assets/dobbo-main-pic-crop.png);
+  background-image: url(assets/dobbo-main-pic-crop-s.png);
 }
 #dobbo-order-btn-container {
   padding: 13px;
@@ -677,9 +677,15 @@ footer {
   .vid-container {
     padding: 120px 80px 0;
   }
-  #dobbo-desc-2 {
+  /* #dobbo-desc-2 {
     max-width: 670px;
+  } */
+  #dobbo-desc-2 {
+    max-width: 680px;
   }
+  /* #dobbo-desc-2 {
+    max-width: 710px;
+  } */
 
   .slider-wrapper {
     height: 385px;
@@ -800,6 +806,9 @@ footer {
   }
   .slider-wrapper {
     height: 480px;
+  }
+  #dobbo-desc-2 {
+    max-width: 710px;
   }
 }
 
