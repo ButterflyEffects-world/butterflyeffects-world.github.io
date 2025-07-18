@@ -43,14 +43,14 @@
                       id="dobbo-order-btn-container"
                       class="order-btn-container"
                     >
-                      <button class="site-button order-btn">
+                      <button class="site-button" id="order-btn" disabled>
                         <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSexOi7wLMKpWC7-9iXet5TYIfZ-WFwqPIODuBo0N5SzaXlOMg/viewform?usp=header" target="_blank">Order here!</a>-->
-                         <a > Sold out!</a>
+                        <a> Sold out!</a>
                         <!-- tekst binnen a-tag hierboven aanpassen om tekst op de gele knop aan te passen -->
                         <!-- <a> vervangen door <a href="" target="_blank"> om link klikbaar te maken -->
                         <!-- gewenste link invullen bij href="" (zoals hieronder) -->
                         <!-- href="https://forms.gle/Sc4xwqGybfBoa8Eh6" target="_blank" -->
-                         <!-- href="https://subscribepage.io/ButterflyEffectsDobbo" target="_blank" -->
+                        <!-- href="https://subscribepage.io/ButterflyEffectsDobbo" target="_blank" -->
                       </button>
                       <div class="price"><p>€350 excl. VAT</p></div>
                     </div>
@@ -60,7 +60,9 @@
                   <!--span class="fine-print-line"
                     >*Pre-orders will be shipped on 17/03/2025.
                   </span-->
-                  <span class="fine-print-line">Next batch dropping June 19th at 15:00 CEST</span>
+                  <span class="fine-print-line"
+                    >Next batch dropping June 19th at 15:00 CEST</span
+                  >
                   <!-- tekst binnen span-tags hierboven aanpassen om tekst op de paarse balk aan te passen -->
                   <!-- bij smallere schermen breekt de tekst tussen de 2 tags -->
                 </div>
@@ -99,15 +101,21 @@
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   referrerpolicy="strict-origin-when-cross-origin"
                   allowfullscreen
+                  loading="lazy"
                 ></iframe>
               </div>
             </div>
             <div class="wrap-manual-desc2">
               <div class="text-section">
                 <div class="manual-btn-container">
-                  <button class="site-button manual-btn">
+                  <button class="site-button" id="manual-btn">
                     <a href="manual-dobbo-digital.pdf" target="_blank"
-                      >view Dobbo manual</a
+                      >View Dobbo manual</a
+                    >
+                  </button>
+                  <button class="site-button" id="firmware-btn">
+                    <a href="firmware-update.html" target="_blank"
+                      >Firmware updates</a
                     >
                   </button>
                 </div>
@@ -285,6 +293,7 @@
       </footer>
     </div>
     <!-- .page-container -->
-    <script src="main.js"></script>
+    <script src="cursor.js"></script>
+    <script src="carousel.js"></script>
   </body>
 </html>
