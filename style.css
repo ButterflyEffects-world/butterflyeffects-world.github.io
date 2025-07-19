@@ -161,6 +161,9 @@ button {
   display: block;
   margin: 0 auto;
 }
+#download {
+  margin: 0 0 20px;
+}
 #order-btn,
 #connect,
 #firmware-btn,
@@ -375,8 +378,11 @@ footer {
 .hidden {
   display: none;
 }
-.extra-page-body {
-  cursor: default !important;
+.extra-page-body,
+button,
+input,
+#file-upload-button {
+  cursor: none !important;
   background-color: var(--DB_blue);
 }
 .extra-page-body,
@@ -437,10 +443,14 @@ input[type='button'][disabled] {
 legend {
   font-size: 1.3em;
 }
-#status {
+#status,
+#downloadLog {
   font-size: 14px;
+}
+#status {
   background-color: white;
 }
+
 #update-instructions {
   font-size: 1em;
 }
@@ -469,8 +479,8 @@ legend,
 fieldset {
   display: block;
 }
-.firm-section {
-  padding-bottom: 24px;
+#update-instructions-legend {
+  padding-top: 18px;
 }
 
 /* --------------------------------------- */
