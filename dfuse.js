@@ -1,3 +1,7 @@
+// Adapted from webdfu by Devan Lai
+// Copyright (c) 2016, Devan Lai
+// Licensed under the ISC License
+
 /* dfu.js must be included before dfuse.js */
 
 var dfuse = {}

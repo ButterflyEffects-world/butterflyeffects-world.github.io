@@ -1,3 +1,7 @@
+// Adapted from webdfu by Devan Lai
+// Copyright (c) 2016, Devan Lai
+// Licensed under the ISC License
+
 var device = null
 ;(function () {
   'use strict'
