@@ -280,7 +280,8 @@ var device = null
     let dfuseStartAddressField = document.querySelector('#dfuseStartAddress')
     let dfuseUploadSizeField = document.querySelector('#dfuseUploadSize')
 
-    let firmwareFileField = document.querySelector('#firmwareFile')
+    //let firmwareFileField = document.querySelector('#firmwareFile')
+    let firmwareSelect = document.querySelector('#firmwareSelect')
     let firmwareFile = null
 
     let downloadLog = document.querySelector('#downloadLog')
@@ -659,7 +660,27 @@ var device = null
       return false
     })
 
-    firmwareFileField.addEventListener('change', function () {
+    firmwareSelect.addEventListener('change', async function () {
+    firmwareFile = null
+
+  const url = firmwareSelect.value
+  if (!url) return
+
+  try {
+    const response = await fetch(url)
+    if (!response.ok) throw new Error('Failed to fetch firmware')
+
+    firmwareFile = await response.arrayBuffer()
+    console.log('Firmware file loaded:', firmwareFile)
+    
+    // You can now enable the download or update button if needed
+    document.querySelector('#download').disabled = false
+  } catch (err) {
+    console.error('Error loading firmware:', err)
+  }
+})
+
+    /*firmwareFileField.addEventListener('change', function () {
       firmwareFile = null
       if (firmwareFileField.files.length > 0) {
         let file = firmwareFileField.files[0]
@@ -669,7 +690,7 @@ var device = null
         }
         reader.readAsArrayBuffer(file)
       }
-    })
+    })*/
 
     downloadButton.addEventListener('click', async function (event) {
       event.preventDefault()
