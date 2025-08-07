@@ -99,7 +99,11 @@
           <!--legend>DFU mode</legend-->
           <fieldset class="firm-section">
             <legend>Firmware Download</legend>
-            <input type="file" id="firmwareFile" name="file" disabled="true" />
+            <!--input type="file" id="firmwareFile" name="file" disabled="true" /-->
+             <select id="firmwareSelect" class="firm-select">
+              <option value="/firmwares/Dobbo_v1.2_batchAB.bin">Dobbo_v1.2_batch_A/B</option>
+              <option value="/firmwares/Dobbo_v1.2_batchC.bin">Dobbo_v1.2_batch_C</option>
+            </select>
             <button class="firm-button" id="download" disabled="true">
               Download
             </button>
