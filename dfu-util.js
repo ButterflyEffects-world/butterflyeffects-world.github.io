@@ -281,7 +281,7 @@ var device = null
     let dfuseUploadSizeField = document.querySelector('#dfuseUploadSize')
 
     //let firmwareFileField = document.querySelector('#firmwareFile')
-    let firmwareSelect = document.querySelector('#firmwareSelect')
+    let firmwareFileField = document.querySelector('#firmwareSelect')
     let firmwareFile = null
 
     let downloadLog = document.querySelector('#downloadLog')
@@ -660,10 +660,10 @@ var device = null
       return false
     })
 
-    firmwareSelect.addEventListener('change', async function () {
+    firmwareFileField.addEventListener('change', async function () {
     firmwareFile = null
 
-  const url = firmwareSelect.value
+  const url = firmwareFileField.value
   if (!url) return
 
   try {
@@ -680,6 +680,11 @@ var device = null
   }
 })
 
+// Trigger the change event manually on page load
+window.addEventListener('DOMContentLoaded', function () {
+  firmwareFileField.selectedIndex = 0; // force first option
+  firmwareFileField.dispatchEvent(new Event('change'));
+});
     /*firmwareFileField.addEventListener('change', function () {
       firmwareFile = null
       if (firmwareFileField.files.length > 0) {
