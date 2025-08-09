@@ -167,15 +167,18 @@ button {
 #order-btn,
 #connect,
 #firmware-btn,
-#download {
+#download,
+#manual-btn {
   background-color: var(--DB_yellow);
 }
 #about-btn {
   background-color: var(--DB_blue);
 }
+/*
 #manual-btn {
   background-color: var(--DB_green);
 }
+*/
 
 .bold {
   font-family: 'dobbo bold';
