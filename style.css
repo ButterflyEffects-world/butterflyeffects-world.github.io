@@ -38,12 +38,10 @@
   box-sizing: border-box;
   font-family: 'dobbo medium';
   color: var(--DB_purple);
-  list-style-type: none;
   text-decoration: none;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* Internet Explorer 10+ */
   border: none;
-  list-style-type: none;
 }
 *::-webkit-scrollbar {
   /* WebKit */
@@ -72,23 +70,22 @@ iframe {
   display: block;
   max-width: 100%;
 }
-.site-button,
-.site-button::after,
-.manual-btn,
-.manual-btn::after,
+
+button,
 h1 {
   border-radius: 30px;
-}
-.site-button,
-h1 {
   border: 1.5px solid var(--DB_purple);
+}
+.firm-button,
+.site-button a {
+  padding: 10px 18px;
 }
 
 /* ----v--- button hover fill effect ---v--- */
-.site-button {
+button {
   position: relative;
 }
-.site-button::after {
+button::after {
   /* cursor: pointer; */
   content: '';
   position: absolute;
@@ -96,24 +93,43 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 30px;
   background: var(--DB_purple);
   clip-path: circle(0%);
   transition: 0.4s ease;
   z-index: 0;
 }
-button a {
+.firm-button::after {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: lightgray;
+}
+#connect::after {
+  content: 'Connect';
+}
+#download::after {
+  content: 'Download';
+}
+.site-button a {
   display: block;
   position: relative;
   z-index: 1;
 }
 /* cursor + hover states only on desktop */
 @media (hover: hover), (-ms-high-contrast: none) {
-  .site-button:hover::after {
+  button:hover::after {
     clip-path: circle(100%);
   }
-  .site-button:hover a {
+  button:hover a {
     color: lightgray;
     transition: color 0.4s ease;
+  }
+  button[disabled]:hover a {
+    color: inherit;
+  }
+  button[disabled]::after {
+    display: none;
   }
   /* ---^--- button hover fill effect ---^--- */
 
@@ -135,10 +151,34 @@ button a {
   /* ---^--- circle following cursor effect ---^--- */
 }
 
-a {
+a,
+button {
   font-size: 16px;
   cursor: none;
 }
+
+#order-btn {
+  display: block;
+  margin: 0 auto;
+}
+#download {
+  margin: 0 0 20px;
+}
+#order-btn,
+#connect,
+#firmware-btn,
+#download,
+#manual-btn {
+  background-color: var(--DB_yellow);
+}
+#about-btn {
+  background-color: var(--DB_blue);
+}
+/*
+#manual-btn {
+  background-color: var(--DB_green);
+}
+*/
 
 .bold {
   font-family: 'dobbo bold';
@@ -161,12 +201,6 @@ header {
 }
 .site-logo img {
   width: 100%;
-}
-#about-btn {
-  background-color: var(--DB_blue);
-}
-#about-a {
-  padding: 10px 14px;
 }
 
 /* body */
@@ -209,6 +243,12 @@ article {
 .manual-btn-container {
   padding: 0 0 30px 0;
 }
+.manual-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
 .pedal-logo img {
   width: 208px;
   margin: 0 auto;
@@ -234,24 +274,7 @@ iframe {
   bottom: 0;
   width: 100%;
 }
-.order-btn,
-.manual-btn {
-  display: block;
-  margin: 0 auto;
-}
-.order-btn {
-  background-color: var(--DB_yellow);
-}
-.manual-btn {
-  background-color: var(--DB_green);
-}
-.manual-btn a,
-.order-btn a {
-  padding: 12px 18px;
-}
-/* .manual-btn-container {
-  padding: 0 0 36px 0;
-} */
+
 .price {
   text-align: center;
   font-size: 12px;
@@ -313,11 +336,13 @@ iframe {
 
 h1 {
   font-weight: 400;
+  font-size: 18px;
+}
+h1 {
   width: fit-content;
   margin: 0 auto;
   padding: 10px 22px;
   text-align: center;
-  font-size: 18px;
   background-color: var(--DB_blue);
 }
 
@@ -352,6 +377,117 @@ footer {
   -moz-text-decoration-color: var(--DB_purple);
 }
 
+/* FIRMWARE UPDATE PAGE */
+.hidden {
+  display: none;
+}
+.extra-page-body,
+button,
+input,
+#file-upload-button {
+  cursor: none !important;
+  background-color: var(--DB_blue);
+}
+.extra-page-body,
+button {
+  cursor: default;
+}
+main {
+  padding: 1.6rem;
+}
+input {
+  display: block;
+}
+
+#update-instructions {
+  padding: 20px;
+}
+#update-instructions ol {
+  display: block;
+  list-style-type: decimal;
+}
+#update-instructions li {
+  font-size: 1em !important;
+  margin-left: 1em;
+  padding: 5px 0;
+}
+p.warning,
+p.error,
+input:invalid {
+  color: red;
+}
+p.error {
+  font-weight: bold;
+}
+label.radio {
+  display: inline;
+}
+
+/* Buttons, forms and input */
+input,
+textarea {
+  border: 1px solid #4a4a4a;
+}
+input:focus,
+textarea:focus {
+  border: 1px solid var(--DB_purple);
+}
+
+textarea {
+  width: 100%;
+}
+
+button[disabled],
+input[type='submit'][disabled],
+input[type='reset'][disabled],
+input[type='button'][disabled] {
+  opacity: 0.5;
+}
+legend {
+  font-size: 1.3em;
+}
+#status,
+#downloadLog {
+  font-size: 14px;
+}
+#status {
+  background-color: white;
+}
+
+#update-instructions {
+  font-size: 1em;
+}
+textarea,
+select,
+input[type] {
+  color: var(--DB_purple);
+  padding: 6px 10px;
+  /* The 6px vertically centers text on FF, ignored by Webkit */
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+textarea:focus,
+select:focus,
+input[type]:focus {
+  border: 1px solid var(--DB_purple);
+  outline: 0;
+}
+
+legend,
+fieldset {
+  display: block;
+}
+#update-instructions-legend {
+  padding-top: 18px;
+}
+
+/* --------------------------------------- */
+
 @media screen and (min-width: 375px) {
   header {
     padding: 20px;
@@ -366,9 +502,6 @@ footer {
   .title {
     padding: 0 0 36px 0;
   }
-  /* .manual-btn-container {
-    padding: 0 0 40px 0;
-  } */
   h1 {
     padding: 10px 26px;
   }
@@ -389,9 +522,6 @@ footer {
   .pedal-logo img {
     width: 220px;
   }
-  /* .manual-btn-container {
-    padding: 0 0 44px 0;
-  } */
   .text-section {
     padding: 44px 38px;
   }
@@ -413,7 +543,8 @@ footer {
 }
 @media screen and (min-width: 600px) {
   body,
-  a {
+  a,
+  button {
     font-size: 18px;
   }
   .site-logo {
@@ -423,6 +554,14 @@ footer {
   .pedal-logo,
   .manual-btn-container {
     padding: 20px;
+  }
+  .manual-btn-container {
+    display: block;
+    text-align: center;
+  }
+  #manual-btn,
+  #firmware-btn {
+    margin: 0 10px;
   }
   .pedal-logo img {
     width: 260px;
@@ -451,16 +590,6 @@ footer {
   #about {
     max-width: 500px;
   }
-  /* .manual-btn-container {
-    padding: 0 0 72px 0;
-  } */
-  /* #dobbo-desc-2 {
-    padding-top: 32px;
-  } */
-
-  /* .manual-btn-container {
-    padding: 20px;
-  } */
 
   .slider-wrapper {
     width: 100%;
@@ -486,6 +615,8 @@ footer {
 
   h1 {
     font-size: 20px;
+  }
+  h1 {
     padding: 10px 60px;
   }
   footer {
@@ -494,7 +625,8 @@ footer {
 }
 @media screen and (min-width: 768px) {
   body,
-  a {
+  a,
+  button {
     font-size: 16px;
   }
   .img-container {
@@ -521,15 +653,7 @@ footer {
   #about {
     max-width: 570px;
   }
-  /* .pedal-info {
-    padding: 50px 60px 70px;
-  } */
-  /* .pedal-info {
-    padding: 50px 60px 20px;
-  } */
-  /* #dobbo-desc-2 {
-    padding: 20px 60px 70px;
-  } */
+
   .vid-container {
     width: 100%;
     padding: 0 70px;
@@ -538,16 +662,35 @@ footer {
     border-radius: 30px;
   }
 
+  #manual-btn,
+  #firmware-btn {
+    margin: 0 20px;
+  }
+
   .slide-arrow {
     width: 2.9rem;
     font-size: 2.2rem;
+  }
+
+  #update-instructions-legend {
+    padding-top: 34px;
+  }
+  main {
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: fit-content;
+    margin: 0 auto;
+    overflow-y: none;
   }
 }
 @media screen and (min-width: 992px) {
 }
 
 @media screen and (min-width: 1024px) {
-  a {
+  a,
+  button {
     font-size: 18px;
   }
   .site-logo {
@@ -590,26 +733,14 @@ footer {
     max-width: 68vw;
     margin: 0 auto;
   }
-  .iframe-container {
-    border-radius: 30px;
-  }
 
   #dobbo-desc-2 p {
     display: block;
   }
-  /* #dobbo-desc-2 {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  } */
   #dobbo-desc-2 {
     padding: 0;
   }
 
-  /* .slider-wrapper {
-    height: 460px;
-  } */
   .slider-wrapper {
     height: 315px;
   }
@@ -619,7 +750,6 @@ footer {
 
   .wrap-manual-desc2,
   #about-section {
-    /* width: 760px; */
     margin: 0 auto;
     text-align: center;
   }
@@ -642,7 +772,8 @@ footer {
     --circle-size: 70px;
   }
   body,
-  a {
+  a,
+  button {
     font-size: 20px;
   }
   header {
@@ -677,15 +808,9 @@ footer {
   .vid-container {
     padding: 120px 80px 0;
   }
-  /* #dobbo-desc-2 {
-    max-width: 670px;
-  } */
   #dobbo-desc-2 {
     max-width: 680px;
   }
-  /* #dobbo-desc-2 {
-    max-width: 710px;
-  } */
 
   .slider-wrapper {
     height: 385px;
@@ -711,14 +836,15 @@ footer {
 }
 @media screen and (min-width: 1400px) {
   body,
-  a {
+  a,
+  button {
     font-size: 22px;
   }
   header {
     padding: 32px;
   }
   .site-logo {
-    width: 194px;
+    width: 200px;
   }
   #about-a {
     padding: 10px 18px;
@@ -726,19 +852,13 @@ footer {
   .order-btn a {
     padding: 12px 22px;
   }
-  .site-button,
+  button,
   h1 {
     border: 2px solid var(--DB_purple);
   }
-  /* .flex {
-    padding: 160px;
-  } */
   .img-container {
     height: 730px;
   }
-  /* .pedal-img {
-    margin: 0 84px;
-  } */
   #dobbo-order-btn-container {
     padding: 32px;
   }
@@ -752,9 +872,6 @@ footer {
   .fine-print {
     padding: 22px 40px;
   }
-  /* .pedal-info {
-    padding: 76px 140px;
-  } */
   .pedal-info {
     width: 60%;
     padding: 70px 160px;
@@ -768,21 +885,16 @@ footer {
   #dobbo-desc-1 {
     padding: 20px 0;
   }
-  /* .wrap-manual-desc2 {
-    padding: 120px 30px;
-  } */
 
   #about {
     max-width: 800px;
   }
-  /* .slider-wrapper {
-    height: 600px;
-  } */
 
   h1 {
     font-size: 22px;
   }
 }
+
 @media screen and (min-width: 1600px) {
   .pedal-img {
     margin: 0 100px;
@@ -791,10 +903,6 @@ footer {
     width: 62%;
     padding: 70px 260px;
   }
-  /* .pedal-info {
-    right: 20px;
-    max-width: 1000px;
-  } */
   .fine-print {
     padding: 24px 40px;
   }
